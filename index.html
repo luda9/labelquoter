@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador de envios</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="./img/santi.PNG">
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="./img/santi.PNG" alt="novedades santi logo" id="santi">
+    <a href="https://novedadessanti182.com/">Regresar a la página principal</a>
+  </div>
+
+  <div class="cotizador">
+    <form id="form">
+
+      <label for="santi">Origen</label>
+      <input type="number" maxlength="5" value="44360" id="santi" disabled>
+
+      <label for="destino">Destino</label>
+      <input type="number" maxlength="5" placeholder="Tu código postal" id="destino">
+
+      <label for="cp">Alto</label>
+      <input type="number" maxlength="5" placeholder="cm" id="cp">
+
+      <label for="cp">Largo</label>
+      <input type="number" maxlength="5" placeholder="cm" id="cp">
+
+      <label for="cp">Ancho</label>
+      <input type="number" maxlength="5" placeholder="cm" id="cp">
+
+      <label for="cp">Peso</label>
+      <input type="number" maxlength="5" placeholder="kg" id="cp">
+
+      <input type="submit" value="Enviar">
+
+    </form>
+  </div>
+
+  <div class="result">
+    <ul>
+
+    </ul>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
