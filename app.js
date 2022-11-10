@@ -6,28 +6,22 @@ const pesoSelect = document.getElementById("peso");
 const form = document.getElementById("form");
 const fedex = document.getElementById('fedex');
 const fedexBox = document.getElementById("fedexBox");
+const mensaje = '</br> </br> <span class="mensaje">Tu códido postal es extendido, los precios que te mostramos abajo son un aproximado, se te dara el precio exacto una vez echo la compra y con tu caja en la mano</span>';
 
 form.addEventListener('submit', (e) =>{
   e.preventDefault();
-
-  // fedex.innerHTML = '';
-
   let peso = pesoSelect.options[pesoSelect.selectedIndex].value;
-
   if ( destino.value.length === 5 && alto.value.length, largo.value.length, ancho.value.length >= 1 && alto.value, largo.value, ancho.value > '0' ) {
     fetchApi(destino.value, alto.value, largo.value, ancho.value, peso)
     zip(destino.value)
   }
-
 })
 
 function fetchApi(destino, alto, largo, ancho, peso) {
   var myHeaders = new Headers();
-  myHeaders.append("authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc1MiwiYSI6MywibyI6MTYyOSwiaWF0IjoxNjY4MTAzNjg0LCJleHAiOjE2NjgxMjE2ODR9.2rdW7_7MeeH_qxqW6pVQ_SlGvFz1cdgNM1mVpB0_o3I");
+  myHeaders.append("authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc1MiwiYSI6MywibyI6MTYyOSwiaWF0IjoxNjY4MTIyMDIxLCJleHAiOjE2NjgxNDAwMjF9.0w8FOzBMzfYJpnvLY1iYckYfWAj18tbG5KGlgVrw3Gc");
   myHeaders.append("Weship-API-Version", "1.0");
-
   var raw = `{\r\n    \"sender\": {\r\n        \"name\": \"Sender Name\",\r\n        \"email\": \"sender@email.com\",\r\n        \"companyName\": \"Sender Company\",\r\n        \"phone\": \"811111111111\",\r\n        \"country\": \"México\",\r\n        \"country_code\": \"MX\",\r\n        \"province\": \"Jalisco\",\r\n        \"province_code\": \"JA\",\r\n        \"city\": \"Jalisco\",\r\n        \"address1\": \"Mariano Jimenez 182\",\r\n        \"address2\": \"\",\r\n        \"optionalInfo\": \"\",\r\n        \"zip\": \"44360\"\r\n    },\r\n    \"recipient\": {\r\n        \"name\": \"Recipient Name\",\r\n        \"email\": \"recipient@email.com\",\r\n        \"companyName\": null,\r\n        \"phone\": \"211111111111\",\r\n        \"country\": \"Mexico\",\r\n        \"country_code\": \"MX\",\r\n        \"province\": \"\",\r\n        \"province_code\": \"\",\r\n        \"city\": \"\",\r\n        \"address1\": \"\",\r\n        \"address2\": \"\",\r\n        \"optionalInfo\": null,\r\n        \"zip\": \"${destino}\"\r\n    },\r\n    \"packages\": [\r\n        {\r\n            \"h\": ${alto},\r\n            \"w\": ${largo},\r\n            \"hh\": ${ancho},\r\n            \"weight\": ${peso},\r\n            \"sizeUnit\": \"CM\",\r\n            \"weightUnit\": \"KG\",\r\n            \"declaredValue\": 0\r\n        }\r\n    ],\r\n    \"courier\": [\r\n        \"fedex\"\r\n ]\r\n}`;
-
   var requestOptions = {
     method: 'POST',
     headers: myHeaders,
@@ -42,19 +36,14 @@ function fetchApi(destino, alto, largo, ancho, peso) {
 
   function fetchedApi(result) {
     const { data } = result
-
     if (peso == 20) {
-      const muchoPeso = 'Peso muy elevado, se necesita cotizar la caja fisicamente'
-
+      const muchoPeso = '<p class="muyPesado">Peso muy elevado, se necesita cotizar la caja fisicamente</p>'
       document.querySelector("ul").innerHTML = muchoPeso;
     } else {
       const primerResultado = data[0];
       const result = [primerResultado];
-
-      const resultado = result.map(result => `<li>${result.alias} $${price(result.amount, peso)} ${result.serviceName}</li>`).join('\n');
-
+      const resultado = result.map(result => `<li class="resultItem"><img src="/img/fedex.png" alt="fedexlogo"> <span> $${price(result.amount, peso)} </span> ${result.serviceName}</li>`).join('\n');
       document.querySelector("ul").innerHTML = resultado;
-
     }
   }
 }
@@ -85,7 +74,13 @@ function zip(code) {
   .then(data => {
     const { data: { message }} = data;
     fedex.innerHTML = message;
-    (fedex.innerText.includes('x')) ? zonaExtendida() : zonaExtendida();
+    if (fedex.innerText.includes('x')) {
+      zonaExtendida()
+      fedex.innerHTML = message + mensaje;
+    } else {
+      zonaExtendida();
+      fedex.innerHTML = message;
+    }
   })
 }
 

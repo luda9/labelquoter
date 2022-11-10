@@ -4,9 +4,206 @@
 
 .extendida {
   border: 1px solid red !important;
+  background-color: #fbc1c1;
 }
 
 .normal {
   border: 1px solid green !important;
+  background-color: #b1f9b1;
+}
+
+.mensaje {
+  font-size: 14px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 50px;
+}
+
+.container .cotizador {
+  width: 60%;
+  height: 350px;
+  margin: 50px;
+}
+
+.container .cotizador form {
+  background-color: #e5e5e5;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  border-radius: 15px;
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.container .cotizador form .input-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+.container .cotizador form .input-box label {
+  padding: 5px;
+  padding-left: 0;
+}
+
+.container .cotizador form .input-box input[type="number"], .container .cotizador form .input-box select {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.container .cotizador form #origenBox {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
+
+.container .cotizador form #destinoBox {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
+
+.container .cotizador form #altoBox {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+}
+
+.container .cotizador form #largoBox {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+}
+
+.container .cotizador form #anchoBox {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
+}
+
+.container .cotizador form #pesoBox {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
+}
+
+.container .cotizador form #enviar {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4 / 5;
+  height: 50px;
+  margin: 10px;
+  background-color: #f58da7;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.container .cotizador form #enviar:hover {
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.container #fedexBox {
+  padding: 20px;
+  width: 60%;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px;
+  margin-top: 0;
+}
+
+.container .result {
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.container .result .muyPesado {
+  padding: 20px;
+  list-style: none;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.container .result .resultItem {
+  padding: 20px;
+  list-style: none;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.container .result .resultItem img {
+  width: 60px;
+}
+
+.container .result .resultItem span {
+  font-weight: bolder;
+  font-size: 18px;
 }
 /*# sourceMappingURL=styles.css.map */
