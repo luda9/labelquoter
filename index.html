@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cotizador de envios</title>
-  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="./img/santi.PNG">
 </head>
 <body>
@@ -22,20 +22,20 @@
       <input type="number" maxlength="5" value="44360" id="santi" disabled>
 
       <label for="destino">Destino</label>
-      <input type="number" maxlength="5" placeholder="Tu código postal" id="destino" value="89590">
+      <input type="number" maxlength="5" placeholder="Tu código postal" id="destino" maxlength="5" value="64000">
 
       <br>
 
       <label for="alto">Alto</label>
-      <input type="number" maxlength="5" placeholder="cm" id="alto" value="47">
+      <input type="number" maxlength="5" placeholder="cm" id="alto" value="20">
 
       <label for="largo">Largo</label>
-      <input type="number" maxlength="5" placeholder="cm" id="largo" value="22">
+      <input type="number" maxlength="5" placeholder="cm" id="largo" value="20">
 
       <br>
 
       <label for="ancho">Ancho</label>
-      <input type="number" maxlength="5" placeholder="cm" id="ancho" value="19">
+      <input type="number" maxlength="5" placeholder="cm" id="ancho" value="20">
 
       <label for="peso">Peso</label>
 
@@ -51,6 +51,10 @@
       <input type="submit" value="Enviar">
 
     </form>
+    <div id="fedexBox" class="hidden">
+      <p id="fedex"></p>
+    </div>
+
   </div>
 
   <div class="result">

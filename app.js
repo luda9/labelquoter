@@ -4,13 +4,21 @@ const largo = document.getElementById("largo");
 const ancho = document.getElementById("ancho");
 const pesoSelect = document.getElementById("peso");
 const form = document.getElementById("form");
+const fedex = document.getElementById('fedex');
+const fedexBox = document.getElementById("fedexBox");
 
 form.addEventListener('submit', (e) =>{
   e.preventDefault();
 
+  // fedex.innerHTML = '';
+
   let peso = pesoSelect.options[pesoSelect.selectedIndex].value;
 
-  ( destino.value.length === 5 && alto.value.length, largo.value.length, ancho.value.length >= 1 && alto.value, largo.value, ancho.value > '0' ) ? fetchApi(destino.value, alto.value, largo.value, ancho.value, peso) : null ;
+  if ( destino.value.length === 5 && alto.value.length, largo.value.length, ancho.value.length >= 1 && alto.value, largo.value, ancho.value > '0' ) {
+    fetchApi(destino.value, alto.value, largo.value, ancho.value, peso)
+    zip(destino.value)
+  }
+
 })
 
 function fetchApi(destino, alto, largo, ancho, peso) {
@@ -52,13 +60,8 @@ function fetchApi(destino, alto, largo, ancho, peso) {
 }
 
 function price(amount, weight) {
-
-  console.log(amount)
-
   let total = parseInt(amount);
-
   let peso = parseInt(weight);
-
   if (peso == 5) {
     (total <= 210) ? total = 210 : total += 20 ;
   } else if (peso == 10){
@@ -66,16 +69,27 @@ function price(amount, weight) {
   } else if (peso == 15){
     (total <= 310) ? total = 310 : total += 20 ;
   }
-
-  // if (total <= 210) {
-  //   total = 210;
-  // } else if (total >= 210 ) {
-  //   total = 255;
-  // } else if (total >= 255) {
-  //   total = 310;
-  // } else {
-  //   total += 20;
-  // }
-
   return(total);
+}
+
+function zip(code) {
+  fedexBox.classList.remove("hidden");
+
+  const url = `https://sistema.globalpaq.mx/api/v2/public/fedex/cobertura?cp_origen=44360&cp_destino=${code}`
+  fetch(url, {
+    headers: {
+      'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2Njc4NTE3OTUsImV4cCI6MTY5OTM4Nzc5NSwiZGF0YSI6eyJpZCI6NzMwMTksIm5hbWUiOiJEYW5pZWwiLCJlbWFpbCI6ImxkbXM5OUBob3RtYWlsLmNvbSIsImV4Y2VkZW50ZSI6MCwic2VndXJvIjowLCJtdWx0aSI6MCwicmVjb2xlY2Npb24iOjB9fQ.0EwaHOF_9KZhv0SXa9HkC96Vgm6Z44N4Nxg0KbLFFJ0',
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    const { data: { message }} = data;
+    fedex.innerHTML = message;
+    (fedex.innerText.includes('x')) ? zonaExtendida() : zonaExtendida();
+  })
+}
+
+function zonaExtendida() {
+  (fedex.innerText.includes('x')) ? fedexBox.classList.add('extendida') : fedexBox.classList.remove('extendida');
+  (!fedex.innerText.includes('x')) ? fedexBox.classList.add('normal') : fedexBox.classList.remove('normal');
 }
