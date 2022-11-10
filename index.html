@@ -9,59 +9,65 @@
   <link rel="icon" type="image/x-icon" href="./img/santi.PNG">
 </head>
 <body>
+  <div class="container">
+    <div class="cotizador">
+      <form id="form">
 
-  <div class="navbar">
-    <!-- <img src="./img/santi.PNG" alt="novedades santi logo" id="santi"> -->
-    <a href="https://novedadessanti182.com/">Regresar a la página principal</a>
-  </div>
+        <div class="input-box" id="origenBox">
+          <label for="santi">Origen</label>
+          <input type="number" maxlength="5" value="44360" id="santi" disabled>
+        </div>
 
-  <div class="cotizador">
-    <form id="form">
+        <div class="input-box" id="destinoBox">
+          <label for="destino">Destino</label>
+          <input type="number" maxlength="5" placeholder="Tu código postal" id="destino" maxlength="5">
+        </div>
 
-      <label for="santi">Origen</label>
-      <input type="number" maxlength="5" value="44360" id="santi" disabled>
+        <div class="input-box" id="altoBox">
+          <label for="alto">Alto</label>
+          <input type="number" maxlength="5" placeholder="cm" id="alto">
+        </div>
 
-      <label for="destino">Destino</label>
-      <input type="number" maxlength="5" placeholder="Tu código postal" id="destino" maxlength="5" value="64000">
+        <div class="input-box" id="largoBox">
+          <label for="largo">Largo</label>
+          <input type="number" maxlength="5" placeholder="cm" id="largo">
+        </div>
 
-      <br>
+        <div class="input-box" id="anchoBox">
+          <label for="ancho">Ancho</label>
+          <input type="number" maxlength="5" placeholder="cm" id="ancho">
+        </div>
 
-      <label for="alto">Alto</label>
-      <input type="number" maxlength="5" placeholder="cm" id="alto" value="20">
+        <div class="input-box" id="pesoBox">
+          <label for="peso">Peso</label>
+          <select name="peso" id="peso">
+            <option value="5">5 kg</option>
+            <option value="10">10 kg</option>
+            <option value="15">15 kg</option>
+            <option value="20">20 kg</option>
+          </select>
+        </div>
 
-      <label for="largo">Largo</label>
-      <input type="number" maxlength="5" placeholder="cm" id="largo" value="20">
+        <input type="submit" value="Enviar" id="enviar">
 
-      <br>
+      </form>
+    </div>
 
-      <label for="ancho">Ancho</label>
-      <input type="number" maxlength="5" placeholder="cm" id="ancho" value="20">
-
-      <label for="peso">Peso</label>
-
-      <select name="peso" id="peso">
-        <option value="5">5 kg</option>
-        <option value="10">10 kg</option>
-        <option value="15">15 kg</option>
-        <option value="20">20 kg</option>
-      </select>
-
-      <br>
-
-      <input type="submit" value="Enviar">
-
-    </form>
     <div id="fedexBox" class="hidden">
       <p id="fedex"></p>
     </div>
 
+    <div class="mensajeBox">
+      <p id="mensaje"></p>
+    </div>
+
+    <div class="result">
+      <ul>
+      </ul>
+    </div>
+
   </div>
 
-  <div class="result">
-    <ul>
-
-    </ul>
-  </div>
   <script src="app.js"></script>
 </body>
 </html>

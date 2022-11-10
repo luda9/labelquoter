@@ -4,8 +4,140 @@
 
 .extendida{
   border: 1px solid red !important;
+  background-color: rgb(251, 193, 193);
 }
 
 .normal{
   border: 1px solid green !important;
+  background-color: rgb(177, 249, 177);
+}
+
+.mensaje{
+  font-size: 14px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  .cotizador{
+    width: 60%;
+    height: 350px;
+    margin: 50px;
+    form{
+      background-color: #e5e5e5;
+      height: auto;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: repeat(4, 1fr);
+      border-radius: 15px;
+      padding: 20px;
+      padding-bottom: 0;
+      .input-box{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        label{
+          padding: 5px;
+          padding-left: 0;
+        }
+        input[type="number"], select{
+          border: none;
+          padding: 10px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+      }
+      #origenBox{
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+      #destinoBox{
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+      #altoBox{
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+      #largoBox{
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+      #anchoBox{
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+      #pesoBox{
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+      #enviar{
+        grid-column: 1 / 3;
+        grid-row: 4 / 5;
+        height: 50px;
+        margin: 10px;
+        background-color: #f58da7;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        transition: all 0.5s;
+        cursor: pointer;
+        color: #fff;
+        margin-bottom: 0;
+        &:hover{
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+      }
+    }
+  }
+  #fedexBox{
+    padding: 20px;
+    width: 60%;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    margin-top: 0;
+  }
+  .result{
+    background-color: #e5e5e5;
+    border-radius: 10px;
+    width: 60%;
+    .muyPesado{
+      padding: 20px;
+      list-style: none;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    .resultItem{
+      padding: 20px;
+      list-style: none;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+      img{
+        width: 60px;
+      }
+      span{
+        font-weight: bolder;
+        font-size: 18px;
+      }
+    }
+  }
 }
