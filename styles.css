@@ -1,0 +1,12 @@
+.hidden {
+  display: none;
+}
+
+.extendida {
+  border: 1px solid red !important;
+}
+
+.normal {
+  border: 1px solid green !important;
+}
+/*# sourceMappingURL=styles.css.map */
