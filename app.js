@@ -17,9 +17,46 @@ form.addEventListener('submit', (e) =>{
   }
 })
 
-function fetchApi(destino, alto, largo, ancho, peso) {
+var myHeaders = new Headers();
+myHeaders.append("Weship-API-Version", "1.0");
+var raw = "{\r\n    \"email\": \"ldms99@hotmail.com\",\r\n    \"password\": \"\"\r\n}";
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+// const tokenApi = await ("https://api.weship.com/user/login", requestOptions)
+// .then(response => response.json())
+// .then(result => {
+//   respuesta = (result.token)});
+
+
+function fetchingApiToken() {
+
+  let respuesta = '';
+  setInterval(async () => {
+    const token = await fetch("https://api.weship.com/user/login", requestOptions)
+
+    respuesta = await token.json();
+    return respuesta
+  }, 30000);
+  console.log(respuesta)
+  return respuesta
+}
+
+
+
+console.log(await fetchingApiToken())
+
+
+function fetchApi(destino, alto, largo, ancho, peso, result) {
+
+  console.log(result.token)
+
   var myHeaders = new Headers();
-  myHeaders.append("authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc1MiwiYSI6MywibyI6MTYyOSwiaWF0IjoxNjY4MTIyMDIxLCJleHAiOjE2NjgxNDAwMjF9.0w8FOzBMzfYJpnvLY1iYckYfWAj18tbG5KGlgVrw3Gc");
+  myHeaders.append(token);
   myHeaders.append("Weship-API-Version", "1.0");
   var raw = `{\r\n    \"sender\": {\r\n        \"name\": \"Sender Name\",\r\n        \"email\": \"sender@email.com\",\r\n        \"companyName\": \"Sender Company\",\r\n        \"phone\": \"811111111111\",\r\n        \"country\": \"México\",\r\n        \"country_code\": \"MX\",\r\n        \"province\": \"Jalisco\",\r\n        \"province_code\": \"JA\",\r\n        \"city\": \"Jalisco\",\r\n        \"address1\": \"Mariano Jimenez 182\",\r\n        \"address2\": \"\",\r\n        \"optionalInfo\": \"\",\r\n        \"zip\": \"44360\"\r\n    },\r\n    \"recipient\": {\r\n        \"name\": \"Recipient Name\",\r\n        \"email\": \"recipient@email.com\",\r\n        \"companyName\": null,\r\n        \"phone\": \"211111111111\",\r\n        \"country\": \"Mexico\",\r\n        \"country_code\": \"MX\",\r\n        \"province\": \"\",\r\n        \"province_code\": \"\",\r\n        \"city\": \"\",\r\n        \"address1\": \"\",\r\n        \"address2\": \"\",\r\n        \"optionalInfo\": null,\r\n        \"zip\": \"${destino}\"\r\n    },\r\n    \"packages\": [\r\n        {\r\n            \"h\": ${alto},\r\n            \"w\": ${largo},\r\n            \"hh\": ${ancho},\r\n            \"weight\": ${peso},\r\n            \"sizeUnit\": \"CM\",\r\n            \"weightUnit\": \"KG\",\r\n            \"declaredValue\": 0\r\n        }\r\n    ],\r\n    \"courier\": [\r\n        \"fedex\"\r\n ]\r\n}`;
   var requestOptions = {
@@ -62,6 +99,7 @@ function price(amount, weight) {
 }
 
 function zip(code) {
+
   fedexBox.classList.remove("hidden");
 
   const url = `https://sistema.globalpaq.mx/api/v2/public/fedex/cobertura?cp_origen=44360&cp_destino=${code}`
@@ -88,3 +126,7 @@ function zonaExtendida() {
   (fedex.innerText.includes('x')) ? fedexBox.classList.add('extendida') : fedexBox.classList.remove('extendida');
   (!fedex.innerText.includes('x')) ? fedexBox.classList.add('normal') : fedexBox.classList.remove('normal');
 }
+
+
+
+// 21600

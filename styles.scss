@@ -39,6 +39,15 @@ input::-webkit-inner-spin-button {
     width: 60%;
     height: 350px;
     margin: 50px;
+    .info{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      #logo{
+        height: 60px;
+      }
+    }
     form{
       background-color: #e5e5e5;
       height: auto;
@@ -112,7 +121,7 @@ input::-webkit-inner-spin-button {
     border-radius: 10px;
     text-align: center;
     margin: 20px;
-    margin-top: 0;
+    margin-top: 50px;
   }
   .result{
     background-color: #e5e5e5;

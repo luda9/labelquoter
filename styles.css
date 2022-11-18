@@ -51,6 +51,23 @@ input::-webkit-inner-spin-button {
   margin: 50px;
 }
 
+.container .cotizador .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20px;
+}
+
+.container .cotizador .info #logo {
+  height: 60px;
+}
+
 .container .cotizador form {
   background-color: #e5e5e5;
   height: auto;
@@ -173,7 +190,7 @@ input::-webkit-inner-spin-button {
   border-radius: 10px;
   text-align: center;
   margin: 20px;
-  margin-top: 0;
+  margin-top: 50px;
 }
 
 .container .result {
